@@ -17,7 +17,7 @@ const WeatherTile = () => {
   const ajxCallForWeather = City => {
     SelectWeather({ ...initialWeather, loading: true });
     fetch(
-      `http://api.weatherapi.com/v1/forecast.json?key=479ea0ad8b854b51ab575333202807&q=${City}&days=1`
+      `https://api.weatherapi.com/v1/forecast.json?key=479ea0ad8b854b51ab575333202807&q=${City}&days=1`
     )
       .then(res => res.json())
       .then(data => {
