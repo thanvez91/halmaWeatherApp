@@ -1,6 +1,4 @@
-.App {
-  text-align: center;
-}
+
 
 .App-logo {
   height: 40vmin;
@@ -14,14 +12,10 @@
 }
 
 .App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
+ width: 550px;
+margin: 0 auto;
   font-size: calc(10px + 2vmin);
-  color: white;
+  color: #000;
 }
 
 .App-link {
@@ -42,6 +36,7 @@
   padding: 20px;
   border: 2px solid white;
   border-radius: 10px;
+  box-shadow: 0 1px 7px rgba(0, 0, 0, 0.45);
 }
 
 
@@ -59,10 +54,55 @@ ul li button{
   text-transform: capitalize;
   border: none;
   border-radius: 5px;
+  cursor: pointer;
   
 }
 
 .cityActive{
-  background: blue;
+  background: rgb(176, 0, 142);
   color: white;
+  font-weight: bold;
+  outline: none;
 }
+
+.featureAll{
+background: #ED8B00;
+color: #ffffff;
+border: none;
+padding: 10px;
+border-radius: 5px;
+outline: none;
+cursor: pointer;
+width: 100%;
+}
+
+.featureAll:hover{
+  box-shadow: 0px 4px 7px 1px rgba(0, 0, 0, 0.3);
+}
+
+.curTemp-wrapper{
+text-align: left;
+display: inline-block;
+}
+
+.curTemp-wrapper > div{
+  display: inline-block;
+  vertical-align: top;
+}
+
+.curTemp-wrapper div:first-child{
+  font-size: 75px;
+}
+
+.min-max-Wrapper{
+font-weight: bold;
+display: inline-block;
+text-align: center;
+margin-right: 20px;
+vertical-align: top;
+}
+
+.min-max-Wrapper span:first-child{
+  display: block;
+}
+

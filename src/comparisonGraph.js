@@ -1,8 +1,10 @@
 import React, { useEffect, useState, Fragment } from "react";
 import { Bar } from "react-chartjs-2";
+import "./App.css";
 
 function WeatherCampareGraph() {
   const [allCityWeather, SetAllCityWeather] = useState([]);
+  const [displayGraph, SetDisplayGraph] = useState(false);
 
   function allWeatherComparison() {
     fetch(
@@ -25,7 +27,7 @@ function WeatherCampareGraph() {
     labels: ["Delhi", "Bengaluru", "Chennai", "Mumbai", "Kolkata"],
     datasets: [
       {
-        label: "Weather Comparison Between Cities",
+        label: "Weather Comparison Between Cities in °C",
         data: allCityWeather
       }
     ]
@@ -46,8 +48,16 @@ function WeatherCampareGraph() {
 
   return (
     <Fragment>
-      <button onClick={event => allWeatherComparison()}>Compare Temparature Between Cities</button>
-      <Bar data={data} options={options} />
+      <button
+        className="featureAll"
+        onClick={event => {
+          allWeatherComparison();
+          SetDisplayGraph(true);
+        }}
+      >
+        Compare Temparature Between Cities
+      </button>
+      {displayGraph ? <Bar data={data} options={options} /> : null}
     </Fragment>
   );
 }

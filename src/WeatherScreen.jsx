@@ -1,6 +1,6 @@
 import React, { useEffect, useState, Fragment } from "react";
 import CityButtons from "./cityButtons.jsx";
-import Test from './comparisonGraph.js';
+import Test from "./comparisonGraph.js";
 
 const WeatherTile = () => {
   let tempValues = {
@@ -49,22 +49,28 @@ const WeatherTile = () => {
         <div>Weather Report Loading...</div>
       ) : (
         <Fragment>
-          <div>
-            Current Temparature : {initialWeather.curTemp}
+          <div className="curTemp-wrapper">
+            <div>
+              {initialWeather.curTemp}
+              {tempCirle}
+            </div>
+
+            <div>
+              <img alt="" src={initialWeather.img}></img>
+            </div>
+          </div>
+          <div className="min-max-Wrapper">
+            <span>Max Temp</span> <span>{initialWeather.highTemp}</span>
             {tempCirle}
           </div>
-          <div>
-            Max Temp : {initialWeather.highTemp}
+          <div className="min-max-Wrapper">
+            <span>Min Temp</span>
+            {initialWeather.lowTemp}
             {tempCirle}
           </div>
-          <div>
-            Min Temp : {initialWeather.lowTemp}
-            {tempCirle}
-          </div>
-          <img alt="" src={initialWeather.img}></img>
         </Fragment>
       )}
-        <Test/>
+      <Test />
     </div>
   );
 };
