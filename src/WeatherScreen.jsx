@@ -13,6 +13,7 @@ const WeatherTile = () => {
   };
   const [City, setCity] = useState("bengaluru");
   const [initialWeather, SelectWeather] = useState(tempValues);
+  const [errorMessage, setErrormessage] = useState(false);
 
   const ajxCallForWeather = City => {
     SelectWeather({ ...initialWeather, loading: true });
@@ -29,6 +30,10 @@ const WeatherTile = () => {
           location: data.location.name,
           loading: false
         });
+      })
+      .catch(error => {
+        setErrormessage(true);
+        SelectWeather({ ...initialWeather, loading: false });
       });
   };
   useEffect(() => {
@@ -45,31 +50,40 @@ const WeatherTile = () => {
   return (
     <div className="temp-wrapper">
       <CityButtons setterForCity={setterForCity} City={City}></CityButtons>
-      {initialWeather.loading ? (
-        <div>Weather Report Loading...</div>
-      ) : (
-        <Fragment>
-          <div className="curTemp-wrapper">
-            <div>
-              {initialWeather.curTemp}
-              {tempCirle}
-            </div>
+      <div>
+        {errorMessage ? (
+          "Server Response failed"
+        ) : (
+          <Fragment>
+            {initialWeather.loading ? (
+              <div>Weather Report Loading...</div>
+            ) : (
+              <Fragment>
+                <div className="curTemp-wrapper">
+                  <div>
+                    {initialWeather.curTemp}
+                    {tempCirle}
+                  </div>
 
-            <div>
-              <img alt="" src={initialWeather.img}></img>
-            </div>
-          </div>
-          <div className="min-max-Wrapper">
-            <span>Max Temp</span> <span>{initialWeather.highTemp}</span>
-            {tempCirle}
-          </div>
-          <div className="min-max-Wrapper">
-            <span>Min Temp</span>
-            {initialWeather.lowTemp}
-            {tempCirle}
-          </div>
-        </Fragment>
-      )}
+                  <div>
+                    <img alt="" src={initialWeather.img}></img>
+                  </div>
+                </div>
+                <div className="min-max-Wrapper">
+                  <span>Max Temp</span> <span>{initialWeather.highTemp}</span>
+                  {tempCirle}
+                </div>
+                <div className="min-max-Wrapper">
+                  <span>Min Temp</span>
+                  {initialWeather.lowTemp}
+                  {tempCirle}
+                </div>
+              </Fragment>
+            )}
+          </Fragment>
+        )}
+      </div>
+
       <Test />
     </div>
   );

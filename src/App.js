@@ -8,10 +8,8 @@ function App() {
   return (
     <div className="App">
       <header className="App-header">
-   
         <h3>Halma Weather Report</h3>
-        <WeatherTile/>
-      
+        <WeatherTile/> 
       </header>
     </div>
   );

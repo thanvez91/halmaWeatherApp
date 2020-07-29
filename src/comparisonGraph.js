@@ -5,6 +5,7 @@ import "./App.css";
 function WeatherCampareGraph() {
   const [allCityWeather, SetAllCityWeather] = useState([]);
   const [displayGraph, SetDisplayGraph] = useState(false);
+  const [errorMessage, setErrormessage] = useState(false);
 
   function allWeatherComparison() {
     fetch(
@@ -17,12 +18,10 @@ function WeatherCampareGraph() {
           accumulator.push(city.main.temp);
         });
         SetAllCityWeather(accumulator);
-      });
+      })
+      .catch(error => setErrormessage(true));
   }
 
-  useEffect(() => {
-    allWeatherComparison();
-  }, []);
   const data = {
     labels: ["Delhi", "Bengaluru", "Chennai", "Mumbai", "Kolkata"],
     datasets: [
@@ -57,7 +56,15 @@ function WeatherCampareGraph() {
       >
         Compare Temparature Between Cities
       </button>
-      {displayGraph ? <Bar data={data} options={options} /> : null}
+      <div>
+        {errorMessage ? (
+          "Server Response failed"
+        ) : (
+          <Fragment>
+            {displayGraph ? <Bar data={data} options={options} /> : null}
+          </Fragment>
+        )}
+      </div>
     </Fragment>
   );
 }
