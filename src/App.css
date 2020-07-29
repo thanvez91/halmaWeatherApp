@@ -36,3 +36,33 @@
     transform: rotate(360deg);
   }
 }
+
+
+.temp-wrapper{
+  padding: 20px;
+  border: 2px solid white;
+  border-radius: 10px;
+}
+
+
+ul{
+  list-style: none;
+}
+
+ul li{
+  display: inline-block;
+  padding: 10px;
+}
+
+ul li button{
+  padding: 10px;
+  text-transform: capitalize;
+  border: none;
+  border-radius: 5px;
+  
+}
+
+.cityActive{
+  background: blue;
+  color: white;
+}
